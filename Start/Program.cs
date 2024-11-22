@@ -1,39 +1,50 @@
-﻿//Логические литералы
-//Есть две логических константы - true (истина) и false (ложь):
-Console.WriteLine(true);
-Console.WriteLine(false);
-// Целочисленные литералы 
-Console.WriteLine(-11);
-Console.WriteLine(5);
-Console.WriteLine(505);
-// Целочисленные литералы (двоичная)
-Console.WriteLine(0b11);        // 3
-Console.WriteLine(0b1011);      // 11
-Console.WriteLine(0b100001);    // 33
-// Целочисленные литералы (16тиричная)
-Console.WriteLine(0x0A);    // 10
-Console.WriteLine(0xFF);    // 255
-Console.WriteLine(0xA1);    // 161
-//Вещественные литералы
-Console.WriteLine(3.14); 
-Console.WriteLine(1.2);
-//Вещественные литералы (Экспоненциальные)
-Console.WriteLine(3.2e3);   // по сути равно 3.2 * 10<sup>3</sup> = 3200 (Экспоненциальные)
-Console.WriteLine(1.2E-1);  // равно 1.2 * 10<sup>-1</sup> = 0.12
-//Символьные литералы
-Console.WriteLine('2');
-Console.WriteLine('A');
-Console.WriteLine('T');
+﻿string hello = "Привет мир";
+Console.WriteLine(hello);
+Console.WriteLine("Добро пожаловать в C#!");
+Console.WriteLine("Пока мир...");
+Console.WriteLine(24.5);
 
-Console.WriteLine('\x78');    // x
-Console.WriteLine('\x5A');    // Z
+//Ниже пример интерполяци, использующийся для вывода нескольких переменных в одну строку
+string name = "Tom";
+int age = 34;
+double height = 1.7;
+/*
+Для встраивания отдельных значений в выводимую на консоль строку используются фигурные скобки, в которые заключается встраиваемое значение. 
+Это можем значение переменной ({name}) или более сложное выражение (например, операция сложения {4 + 7}). А перед всей строкой ставится знак доллара $.
+*/
+Console.WriteLine($"Имя: {name}  Возраст: {age}  Рост: {height}м");
 
-Console.WriteLine('\u0420');    // Р
-Console.WriteLine('\u0421');    // С
-//Строковые литералы
-Console.WriteLine("hello");
-Console.WriteLine("фыва");
-Console.WriteLine("hello word");
+//пример вывода с помощью плейсхолдеров
+string name1 = "Tom";
+int age2 = 34;
+double height3 = 1.7;
+//в фигурных скобках указывается порядковый номер переменных, перечисленных через запятую в конце инструкции
+Console.WriteLine("Имя: {0}  Возраст: {2}  Рост: {1}м", name1, height3, age2);
 
+// Console.Write отличается от WL, тем что не переводит на следующую строку
+string _name = "Tom";
+int _age = 34;
+double _height = 1.7;
+//в учебнике не показан пример, если сделать так, то будет видно отличие
+Console.Write($"Имя: {_name}  Возраст: {_age}  Рост: {_height}м ");
+Console.Write($"Имя: {_name}  Возраст: {_age}  Рост: {_height}м ");
 
-Console.WriteLine("Привет \nмир"); // Вывод данных будет осуществлен в две строки, так же \" - " применение кавычек в строке, '\n' - перевод строки '\t' - табуляция '\\' - слеш
+// Консольный ввод
+Console.Write("Введите свое имя: ");
+string? name_ = Console.ReadLine();
+Console.WriteLine($"Привет {name_}");
+
+// Ниже пример взаимодействия с данными, введенными пользователем для конвертации в нужный тип, т.к. изначально это string
+Console.Write("Введите имя: ");
+string? Name = Console.ReadLine();
+
+Console.Write("Введите возраст: ");
+int Age = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Введите рост: ");
+double Height = Convert.ToDouble(Console.ReadLine());
+
+Console.Write("Введите размер зарплаты: ");
+decimal salary = Convert.ToDecimal(Console.ReadLine());
+
+Console.WriteLine($"Имя: {Name}  Возраст: {Age}  Рост: {Height}м  Зарплата: {salary}$");
