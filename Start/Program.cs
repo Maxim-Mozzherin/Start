@@ -36,4 +36,4 @@ Console.WriteLine("фыва");
 Console.WriteLine("hello word");
 
 
-Console.WriteLine("Привет \nмир");
+Console.WriteLine("Привет \nмир"); // Вывод данных будет осуществлен в две строки, так же \" - " применение кавычек в строке, '\n' - перевод строки '\t' - табуляция '\\' - слеш
