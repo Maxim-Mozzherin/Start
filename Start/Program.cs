@@ -1,22 +1,53 @@
-﻿
-int a, b, c;
-a = b = c = 34;
-Console.WriteLine ($"{a}.{b}.{c}"); //34.34.34
+﻿// Преобразование базовых типов данных
+
+byte a = 4;
+byte b = a + 70;  // ошибка
+
+/*
+Дело в том, что операция сложения (да и вычитания) возвращает значение типа int,
+если в операции участвуют целочисленные типы данных с разрядностью меньше или равно int (то есть типы byte, short, int).
+Поэтому результатом операции a + 70 будет объект, который имеет длину в памяти 4 байта.
+Затем этот объект мы пытаемся присвоить переменной b, которая имеет тип byte и в памяти занимает 1 байт. 
+ */
+
+byte a1 = 4;
+byte b1 = 70;
+byte a2 = (byte)(a1 + b1); // работает
+
+byte a3 = 4;
+byte b3 = (byte)(a3 + 70); //работает
+
+//Сужающие и расширяющие преобразования
+/*
+
+byte -> short -> int -> long -> decimal
+
+int -> double
+
+short -> float -> double
+
+char -> int
 
 
-int a1, b1, c1;
-a1 = b1 = c1 = 34 * 2 / 4; // 17
+ Все безопасные автоматические преобразования можно описать следующей таблицей:
+ byte ==>> short, ushort, int, uint, long, ulong, float, double, decimal
 
-int x = 21;
-int y = 10;
-int z = x % y;
+sbyte ==>> short, int, long, float, double, decimal
 
-Console.WriteLine(z); //1
+short ==>> int, long, float, double, decimal
 
-int a2 = 10;
-a2 += 10;        // 20
-a2 -= 4;         // 16
-a2 *= 2;         // 32
-a2 /= 8;         // 4
-a2 <<= 4;      // 64
-a2 >>= 2;      // 16
+ushort ==>> int, uint, long, ulong, float, double, decimal
+
+int ==>> long, float, double, decimal
+
+uint ==>> long, ulong, float, double, decimal
+
+long ==>> float, double, decimal
+
+ulong ==>> float, double, decimal
+
+float ==>> double
+
+char ==>> ushort, int, uint, long, ulong, float, double, decimal
+ 
+ */
