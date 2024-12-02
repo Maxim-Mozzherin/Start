@@ -12,8 +12,8 @@ decimal сontribution = Convert.ToDecimal(Console.ReadLine());
 Console.WriteLine("Введите количество месяцев");
 int countMonths = Convert.ToInt32(Console.ReadLine());
 decimal percent = 0.07M;
-double sum = 0.0;
-
+decimal sum = 0;
+decimal сontributionStart = сontribution;
 for (int i = 1; i <= countMonths; i++)
 {
 
@@ -21,6 +21,12 @@ for (int i = 1; i <= countMonths; i++)
 
 
 }
-Console.WriteLine($"Ваш вклад {сontribution}руб. на {countMonths} мес.\nВы можете заработать {sum} руб");
+sum = сontribution - сontributionStart;
+Console.WriteLine($"Ваш вклад {сontributionStart}руб. на {countMonths} мес.\nВы можете заработать {sum} руб.\n" +
+    $"В итоге после {countMonths} мес. сумма вклада составит {сontribution} руб. ");
+
+
+
+
 
 
