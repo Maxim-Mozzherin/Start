@@ -1,45 +1,66 @@
-﻿/*
- Упражнение 1
-Задан следующий трехмерный массив:
-
-1
-2
-3
-4
-5
-int[,,] mas = { { { 1, 2 },{ 3, 4 } }, 
-                { { 4, 5 }, { 6, 7 } }, 
-                { { 7, 8 }, { 9, 10 } }, 
-                { { 10, 11 }, { 12, 13 } }
-              };
-С помощью циклов переберите все элементы этого массива и выведите их на консоль в следующем виде:
-
-{{{1 , 2} , {3 , 4}} , {{4 , 5} , {6 , 7}} , {{7 , 8}, {9 , 10}} , {{10 , 11} , {12 , 13}}}
- */
-
-int[,,] mas = { { { 1, 2 },{ 3, 4 } },
-                { { 4, 5 }, { 6, 7 } },
-                { { 7, 8 }, { 9, 10 } },
-                { { 10, 11 }, { 12, 13 } }
-              };
-Console.Write("{");
-for (int i = 0; i < mas.GetLength(0); i++)
+﻿// работа с массивами
+int[] numbers = { -4, -3, -2, -1, 0, 1, 2, 3, 4 };
+int result = 0;
+foreach (int number in numbers)
 {
-    if (i > 0) Console.Write(" , ");
-    Console.Write("{");
-    for (int j = 0; j < mas.GetLength(1); j++)
+    if (number > 0)
     {
-        if (j > 0) Console.Write(" , ");
-        Console.Write("{");
-        for (int k = 0; k < mas.GetLength(2); k++)
-        {
-            if (k > 0) Console.Write(" , ");
-
-            Console.Write(mas[i, j, k]);
-        }
-        Console.Write("}");
+        result++;
     }
-    Console.Write("}");
-        }
-Console.WriteLine("}");
+}
+Console.WriteLine($"Число элементов больше нуля: {result}");
 
+//Инверсия массива 
+int[] numbers = { -4, -3, -2, -1, 0, 1, 2, 3, 4 };
+
+int n = numbers.Length; // длина массива
+int k = n / 2;          // середина массива
+int temp;               // вспомогательный элемент для обмена значениями
+for (int i = 0; i < k; i++)
+{
+    temp = numbers[i];
+    numbers[i] = numbers[n - i - 1];
+    numbers[n - i - 1] = temp;
+}
+foreach (int i in numbers)
+{
+    Console.Write($"{i} \t");
+}
+// так же есть встроенный метод для реверса Array.Revers, не понимаю, почему его нет в примерах Метанит
+int[] numbers = { -4, -3, -2, -1, 0, 1, 2, 3, 4 };
+Array.Reverse(numbers); // встроенный метод для разворота массива
+foreach (int i in numbers)
+{
+    Console.Write($"{i} \t");
+}
+// Сортировка массива "руками"
+int[] nums = { 54, 7, -41, 2, 4, 2, 89, 33, -5, 12 };
+
+// сортировка
+int temp;
+for (int i = 0; i < nums.Length - 1; i++)
+{
+    for (int j = i + 1; j < nums.Length; j++)
+    {
+        if (nums[i] > nums[j])
+        {
+            temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+        }
+    }
+}
+
+// вывод
+Console.WriteLine("Вывод отсортированного массива");
+for (int i = 0; i < nums.Length; i++)
+{
+    Console.WriteLine(nums[i]);
+}
+// Тут тоже не понятно, для чего дан пример, мб для понимания работы сортировки, но все же указать, что есть встроенный метод для сортировки не помешало бы Array.Sort
+int[] nums = { 54, 7, -41, 2, 4, 2, 89, 33, -5, 12 };
+Array.Sort(nums);
+foreach (int number in nums)
+    { 
+    Console.WriteLine(number); 
+}
